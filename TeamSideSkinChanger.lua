@@ -1541,7 +1541,7 @@ local weapons =
     "Sawed-Off",
     "Tec-9",
     "P2000/USP-S",
-    "MP7",
+    "MP7/MP5",
     "MP9",
     "Nova",
     "P250",
@@ -1577,7 +1577,7 @@ local weaponids = {
     CWeaponSawedoff = "Sawed-Off",
     CWeaponTec9 = "Tec-9",
     CWeaponHKP2000 = "P2000/USP-S",
-    CWeaponMP7 = "MP7",
+    CWeaponMP7 = "MP7/MP5",
     CWeaponMP9 = "MP9",
     CWeaponNOVA = "Nova",
     CWeaponP250 = "P250",
@@ -1777,6 +1777,7 @@ local function changeskins()
     else
         playerteam = "T"
     end
+    client_log(playerweapon)
     if entity_is_alive(localplayer) == true then
         weapon = weaponids[playerweapon]
         local skin = ui_get(weapons_references[playerteam][weapon])
@@ -1785,7 +1786,7 @@ local function changeskins()
         local changeto = SkinIds[skin]
         
         if currentskin[playerteam][weapon][1] ~= changeto then
-           
+
             table_remove(currentskin[playerteam][weapon], 1)
             table_insert(currentskin[playerteam][weapon], changeto)
             ui_set(skinBox, changeto)
