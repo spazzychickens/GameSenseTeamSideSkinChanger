@@ -1512,6 +1512,7 @@ local knifes =
     "Butterfly",
     "Falchion",
     "Shadow Dagger",
+    "Survival bowie",
     "Ursus",
     "Navaja",
     "Stiletto",
@@ -1550,8 +1551,7 @@ local weapons =
     "SSG 08",
     "CZ75-Auto",
     "R8 Revolver",
-    "Knife",
-    "C4IGNORE"
+    "Knife"
 }
 local weaponids = {
     
@@ -1582,11 +1582,9 @@ local weaponids = {
     CWeaponNOVA = "Nova",
     CWeaponP250 = "P250",
     CWeaponSCAR20 = "SCAR-20",
-    CWeaponSG550 = "SG 553",
-    CWeaponSSG08 = "SSG 08",
+    CWeaponSG553 = "SG 553", CWeaponSSG08 = "SSG 08",
     CweaponP250 = "CZ75-Auto",
-    CKnife = "Knife",
-    CC4 = "C4IGNORE",
+    CKnife = "Knife"
 }
 local teams =
 {
@@ -1623,7 +1621,7 @@ local currentgloveS = {["CT"] = {""}, ["T"] = {}}
 
 local currentgloveM = {["CT"] = {"Bloodhound"}, ["T"] = {"Bloodhound"}}
 
-local currentskin = {["CT"] = {["Desert Eagle/R8"] = {nil}, ["Dual Berettas"] = {nil}, ["Five-SeveN"] = {nil}, ["Glock-18"] = {nil}, ["AK-47"] = {nil}, ["AUG"] = {nil}, ["AWP"] = {nil}, ["FAMAS"] = {nil}, ["G3SG1"] = {nil}, ["Galil AR"] = {nil}, ["M249"] = {nil}, ["M4"] = {nil}, ["MAC-10"] = {nil}, ["P90"] = {nil}, ["UMP-45"] = {nil}, ["XM1014"] = {nil}, ["PP-Bizon"] = {nil}, ["MAG-7"] = {nil}, ["Negev"] = {nil}, ["Sawed-Off"] = {nil}, ["Tec-9"] = {nil}, ["P2000/USP-S"] = {nil}, ["MP7/MP5"] = {nil}, ["MP9"] = {nil}, ["Nova"] = {nil}, ["P250"] = {nil}, ["SCAR-20"] = {nil}, ["SG 553"] = {nil}, ["SSG 08"] = {nil}, ["CZ75-Auto"] = {nil}, ["R8 Revolver"] = {nil}, ["Knife"] = {nil}}, ["T"] = {["Desert Eagle/R8"] = {nil}, ["Dual Berettas"] = {nil}, ["Five-SeveN"] = {nil}, ["Glock-18"] = {nil}, ["AK-47"] = {nil}, ["AUG"] = {nil}, ["AWP"] = {nil}, ["FAMAS"] = {nil}, ["G3SG1"] = {nil}, ["Galil AR"] = {nil}, ["M249"] = {nil}, ["M4"] = {nil}, ["MAC-10"] = {nil}, ["P90"] = {nil}, ["UMP-45"] = {nil}, ["XM1014"] = {nil}, ["PP-Bizon"] = {nil}, ["MAG-7"] = {nil}, ["Negev"] = {nil}, ["Sawed-Off"] = {nil}, ["Tec-9"] = {nil}, ["P2000/USP-S"] = {nil}, ["MP7/MP5"] = {nil}, ["MP9"] = {nil}, ["Nova"] = {nil}, ["P250"] = {nil}, ["SCAR-20"] = {nil}, ["SG 553"] = {nil}, ["SSG 08"] = {nil}, ["CZ75-Auto"] = {nil}, ["R8 Revolver"] = {nil}, ["Knife"] = {nil}}}
+local currentskin = {["CT"] = {["Desert Eagle/R8"] = {nil}, ["Dual Berettas"] = {nil}, ["Five-SeveN"] = {nil}, ["Glock-18"] = {nil}, ["AK-47"] = {nil}, ["AUG"] = {nil}, ["AWP"] = {nil}, ["FAMAS"] = {nil}, ["G3SG1"] = {nil}, ["Galil AR"] = {nil}, ["M249"] = {nil}, ["M4"] = {nil}, ["MAC-10"] = {nil}, ["P90"] = {nil}, ["UMP-45"] = {nil}, ["XM1014"] = {nil}, ["PP-Bizon"] = {nil}, ["MAG-7"] = {nil}, ["Negev"] = {nil}, ["Sawed-Off"] = {nil}, ["Tec-9"] = {nil}, ["P2000/USP-S"] = {nil}, ["MP7/MP5"] = {nil}, ["MP9"] = {nil}, ["Nova"] = {nil}, ["P250"] = {nil}, ["SCAR-20"] = {nil}, ["SG 553"] = {nil}, ["SSG 08"] = {nil}, ["CZ75-Auto"] = {nil}, ["R8 Revolver"] = {nil}, ["Knife"] = {nil}, ["C4IGNORE"] = {nil}}, ["T"] = {["Desert Eagle/R8"] = {nil}, ["Dual Berettas"] = {nil}, ["Five-SeveN"] = {nil}, ["Glock-18"] = {nil}, ["AK-47"] = {nil}, ["AUG"] = {nil}, ["AWP"] = {nil}, ["FAMAS"] = {nil}, ["G3SG1"] = {nil}, ["Galil AR"] = {nil}, ["M249"] = {nil}, ["M4"] = {nil}, ["MAC-10"] = {nil}, ["P90"] = {nil}, ["UMP-45"] = {nil}, ["XM1014"] = {nil}, ["PP-Bizon"] = {nil}, ["MAG-7"] = {nil}, ["Negev"] = {nil}, ["Sawed-Off"] = {nil}, ["Tec-9"] = {nil}, ["P2000/USP-S"] = {nil}, ["MP7/MP5"] = {nil}, ["MP9"] = {nil}, ["Nova"] = {nil}, ["P250"] = {nil}, ["SCAR-20"] = {nil}, ["SG 553"] = {nil}, ["SSG 08"] = {nil}, ["CZ75-Auto"] = {nil}, ["R8 Revolver"] = {nil}, ["Knife"] = {nil}, ["C4IGNORE"] = {nil}}}
 local filter, skinBox = ui_reference("Skins", "Weapon Skin", "filter by weapon")
 local overrideKnife, knifeModel = ui_reference("Skins", "Knife options", "Override Knife")
 local enableskin = ui_reference("Skins", "Weapon Skin", "enabled")
@@ -1710,7 +1708,6 @@ local function createslider()
         quality_references[team] = {}
         for i = 1, #weapons do
             weapon = weapons[i]
-            
             local reference = ui_new_slider("MISC", "Miscellaneous", team .. " - Skin - " .. weapon, 1, 621, 1, true, "", 1, skinName)
             local reference2 = ui_new_checkbox("MISC", "Miscellaneous", team .. " - Stattrak - " .. weapon)
             local reference3 = ui_new_slider("MISC", "Miscellaneous", team .. " - Quality - " .. weapon, 1, 100, 100, true, "%", 1)
@@ -1765,27 +1762,25 @@ local function GloveSShow()
 end
 GloveSShow()
 
-
 local function changeskins()
     
     playerweapon = entity_get_player_weapon(localplayer)
     playerweapon = entity_get_classname(playerweapon)
     local playerteam = entity_get_prop(localplayer, "m_iTeamNum")
-    
     if playerteam == 3 then
         playerteam = "CT"
     else
         playerteam = "T"
     end
     if entity_is_alive(localplayer) == true then
-        weapon = weaponids[playerweapon]
+        if weapon == nil then
+            return
+        end
         local skin = ui_get(weapons_references[playerteam][weapon])
         local Stattrak = ui_get(stattrak_references[playerteam][weapon])
         local skinwear = ui_get(quality_references[playerteam][weapon])
         local changeto = SkinIds[skin]
-        
         if currentskin[playerteam][weapon][1] ~= changeto then
-
             table_remove(currentskin[playerteam][weapon], 1)
             table_insert(currentskin[playerteam][weapon], changeto)
             ui_set(skinBox, changeto)
