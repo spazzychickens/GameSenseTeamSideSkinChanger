@@ -1777,7 +1777,6 @@ local function changeskins()
     else
         playerteam = "T"
     end
-    client_log(playerweapon)
     if entity_is_alive(localplayer) == true then
         weapon = weaponids[playerweapon]
         local skin = ui_get(weapons_references[playerteam][weapon])
